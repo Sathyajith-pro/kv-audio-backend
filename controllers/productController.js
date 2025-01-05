@@ -10,7 +10,7 @@ export function addProduct(req,res){
         })
         return  //return ekak dala methanin pahala tika run wena eka nawaththanawa
     }
-    if(req.user.role != "admin"){
+    if(req.user.role != "admin") {
         res.status(401).json({
             message : "You are not authorized perform this action"
         })

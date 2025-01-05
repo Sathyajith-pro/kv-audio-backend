@@ -6,6 +6,8 @@ import productRouter from "./routes/productRouter.js";
 import jwt from "jsonwebtoken";
 
 
+
+
 const app = express()
 
 app.use(bodyParser.json()); //middleware parser library 
@@ -33,11 +35,10 @@ app.use((req,res,next)=>{   //create middleware
 });
 
 
-let mongoUrl = "mongodb+srv://admin:123@cluster0.5jwx6.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+let mongoUrl = "mongodb+srv://admin:123@cluster0.5jwx6.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+mongoose.connect(mongoUrl)               //methanin thamai kiyanne mongo url ekath ekka connect wenna kiyala
 
-mongoose.connect(mongoUrl) //methanin thamai kiyanne mongo url ekath ekka connect wenna kiyala
-
-const connection = mongoose.connection  //me mongoose kiyana library eke thiyena connection eka araganna kiyanawa
+const connection = mongoose.connection   //me mongoose kiyana library eke thiyena connection eka araganna kiyanawa
 connection.once("open",()=>{
     console.log("MongoDB Connection established sucessfully")
 })
