@@ -5,5 +5,10 @@ const reviewRouter = express.Router();
 
 reviewRouter.post("/",addReview);
 reviewRouter.get("/",getReviews);
+/*reviewRouter.get("/:name",
+    (req,res)=>{
+        console.log(req.params.name)
+    }
+)*/
 
 export default reviewRouter;
