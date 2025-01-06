@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import userRouter from "./routes/userRouter.js";
 import productRouter from "./routes/productRouter.js";
 import jwt from "jsonwebtoken";
+import reviewRouter from "./routes/reviewRouter.js";
 
 
 
@@ -45,6 +46,10 @@ connection.once("open",()=>{
 
 app.use("/api/users",userRouter)
 app.use("/api/products",productRouter)
+app.use("/api/reviews",reviewRouter)
+
+//testuser@example.com -customer
+//testadmin@example.com-admin
 
 
 app.listen(3002,()=>{

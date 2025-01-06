@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required : true,
         defualt : "https://www.shutterstock.com/image-vector/user-profile-icon-vector-avatar-600nw-2247726673.jpg"
-    }    
+    }   
 });
 
 const User = mongoose.model("User",userSchema);

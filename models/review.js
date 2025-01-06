@@ -12,7 +12,7 @@ const reviewSchema = new mongoose.Schema({
         required : true,
     },
     rating :{
-        type : String,
+        type : Number,
         required : true,
     },
     Comment:{
@@ -20,7 +20,7 @@ const reviewSchema = new mongoose.Schema({
         required : true,
     },
     date :{
-        type : String,
+        type : Date,
         required : true,
         default : Date.now()
     },

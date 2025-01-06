@@ -31,10 +31,11 @@ export function loginUser(req,res){
 
             if(isPasswordCorrect){
                 const token = JsonWebToken.sign({
-                    firstname : user.firstName,
-                    lastname  : user.lastName,
-                    eamil : user.email,
-                    role : user.role
+                    firstName : user.firstName,
+                    lastName  : user.lastName,
+                    email : user.email,
+                    role : user.role,
+                    profilePicture :user.profilePicture
                 },"kv-secret-89!")
                 res.json({message : "Login successful",token : token});
 

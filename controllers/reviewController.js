@@ -1,6 +1,6 @@
 import Review from "../models/review.js";
 
-export function addreview(req,res){
+export function addReview(req,res){
     if(req.user == null){
         res.status(401).json({
             message : "Please login try  again"
@@ -10,17 +10,42 @@ export function addreview(req,res){
 
     const data = req.body;
 
-    data.name = req.user.firstName + "" +lastName;
+    //console.log("req.user",req.user);
+
+    data.name = req.user.firstName + " " +req.user.lastName;
     data.email = req.user.email;
     data.profilePicture = req.user.profilePicture;
 
-    const newReview = new Review(data)
+    const newReview = new Review(data);
 
     newReview.save().then(()=>{
         res.json({message:"Review successfully added"});
     }).catch(()=>{
+
+       // console.error("error saving review",error)
+
         res.status(500).json({
             error: "Review addition failed "
         })
+       
     });
 }
+
+//Create preview  reviews(cruad)
+
+ export function getReviews(req,res){
+
+    const user = req.user;
+
+    if(user==null || user.role != "admin"){
+        Review.find({isApproved : true}).then((reviews)=>{
+            res.json(reviews);
+        })
+        return
+    }
+    if(user.role=="admin"){
+        Review.find().then((reviews)=>{
+            res.json(reviews);
+        })
+    }
+ }
