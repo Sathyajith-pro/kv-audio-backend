@@ -50,4 +50,18 @@ export function addReview(req,res){
     }
  }
 
- //create 
+ 
+ //create delete
+
+ export function deleteReview(req,res){
+
+    const email = req.params.email;
+
+    Review.deleteOne({email:email}).then(()=>{
+        res.json({message : "Review delete successfully" });
+    }).catch(()=>{
+        res.status(500).json({
+            error : "review deletion failed"
+        })
+    });
+ }

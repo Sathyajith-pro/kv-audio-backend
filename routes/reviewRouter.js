@@ -1,5 +1,5 @@
 import express from "express";
-import { addReview, getReviews } from "../controllers/reviewController.js";
+import { addReview, deleteReview, getReviews } from "../controllers/reviewController.js";
 
 const reviewRouter = express.Router();
 
@@ -10,5 +10,6 @@ reviewRouter.get("/",getReviews);
         console.log(req.params.name)
     }
 )*/
+reviewRouter.delete("/:email",deleteReview)
 
 export default reviewRouter;
