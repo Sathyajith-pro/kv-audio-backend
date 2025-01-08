@@ -33,22 +33,27 @@ export function addReview(req,res){
 
 //Create preview  reviews(cruad)
 
- export function getReviews(req,res){
+ export async function getReviews(req,res){
 
     const user = req.user;
-
+try{
     if(user==null || user.role != "admin"){
-        Review.find({isApproved : true}).then((reviews)=>{
-            res.json(reviews);
-        })
-        return
+        const review = await Review.find({isApproved : true})//.then((reviews)=>{
+            res.json(review);
+       /* }).catch((error)=>{
+            res.status(500).json({error : " failed to fetch reviews"})
+        })*/
+        //return
     }
     if(user.role=="admin"){
-        Review.find().then((reviews)=>{
+       const reviews=await Review.find()//.then((reviews)=>{
             res.json(reviews);
-        })
-    }
+        }
+    
+ }catch(e){
+    res.status(500).json({error:"failed to fetch reviews" })
  }
+}
 
  
  //create delete review function 
