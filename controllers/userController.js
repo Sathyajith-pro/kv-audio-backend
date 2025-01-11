@@ -47,3 +47,13 @@ export function loginUser(req,res){
     })
 
 }
+
+
+export function isItAdmin(req){
+
+    let isAdmin=false;
+    if(req.user != null && req.user.role == "admin"){
+        isAdmin = true;
+    }
+    return isAdmin;
+}

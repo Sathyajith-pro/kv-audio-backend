@@ -1,4 +1,5 @@
 import Product from "../models/product.js";
+import { isItAdmin } from "./userController.js";
 
 export function addProduct(req,res){
 
@@ -27,4 +28,24 @@ export function addProduct(req,res){
     }).catch((error)=>{
         res.status(500).json({message : "Product addition failed"})
     });
+}
+
+export async function getProducts(req,res){
+
+    try{
+
+        if(isItAdmin(req)){
+          const products = await Product.find();
+          res.json(products);
+        return;
+        }else{
+            const products =await Product.find({availability:true});
+            res.json(products);
+            return;
+        }
+    }catch(e){
+        res.status(500).json({
+            message : "Failed to get product"
+        })
+    }
 }

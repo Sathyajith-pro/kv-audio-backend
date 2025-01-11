@@ -46,9 +46,10 @@ connection.once("open",()=>{
     console.log("MongoDB Connection established sucessfully")
 })
 
-app.use("/api/users",userRouter)
-app.use("/api/products",productRouter)
-app.use("/api/reviews",reviewRouter)
+app.use("/api/users",userRouter);
+app.use("/api/products",productRouter);
+app.use("/api/reviews",reviewRouter);
+
 
 //testuser@example.com -customer
 //testadmin@example.com-admin
