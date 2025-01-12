@@ -3,7 +3,7 @@ import { isItAdmin } from "./userController.js";
 
 export function addProduct(req,res){
 
-    console.log(req.user)
+    
     if(req.user == null){
 
         res.status(401).json({
@@ -26,6 +26,7 @@ export function addProduct(req,res){
         res.json({message : "Product add successfully"});
 
     }).catch((error)=>{
+        
         res.status(500).json({message : "Product addition failed"})
     });
 }
@@ -94,7 +95,7 @@ export async function updateProduct(req,res){
 
 export async function deleteProduct(req,res){
     try{
-        if(isItAdmin){
+        if(isItAdmin(req)){
             const key = req.params.key;
             await Product.deleteOne({key:key});
             res.json({

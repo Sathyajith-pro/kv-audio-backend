@@ -6,6 +6,7 @@ import productRouter from "./routes/productRouter.js";
 import jwt from "jsonwebtoken";
 import reviewRouter from "./routes/reviewRouter.js";
 import dotenv from "dotenv"
+import inquiryRouter from "./routes/inquiryRouter.js";
 
 dotenv.config()
 //.env file eka thibune routes folder eka athule ekai aula. eka root folder ekata danna ona
@@ -25,7 +26,7 @@ app.use((req,res,next)=>{   //create middleware
 
         jwt.verify(token, "kv-secret-89!",
         (err, decoded) => {
-            console.log(err);
+            //console.log(err);
             if(!err){
                 req.user = decoded;
                 
@@ -49,6 +50,7 @@ connection.once("open",()=>{
 app.use("/api/users",userRouter);
 app.use("/api/products",productRouter);
 app.use("/api/reviews",reviewRouter);
+app.use("/api/inquiries",inquiryRouter);
 
 
 //testuser@example.com -customer
