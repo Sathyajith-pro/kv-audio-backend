@@ -7,12 +7,14 @@ import jwt from "jsonwebtoken";
 import reviewRouter from "./routes/reviewRouter.js";
 import dotenv from "dotenv"
 import inquiryRouter from "./routes/inquiryRouter.js";
+import cors from "cors";
 
 dotenv.config()
 //.env file eka thibune routes folder eka athule ekai aula. eka root folder ekata danna ona
 //e kiyanne project folder eke mulatama dana ona
 
 const app = express()
+app.use(cors());
 
 app.use(bodyParser.json()); //middleware parser library 
 
