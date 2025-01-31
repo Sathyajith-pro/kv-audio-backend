@@ -38,7 +38,7 @@ export function loginUser(req,res){
                     profilePicture :user.profilePicture,
                     phone : user.phone,
                 },"kv-secret-89!")
-                res.json({message : "Login successful",token : token});
+                res.json({message : "Login successful",token : token, user:user});
 
 
             }else{
