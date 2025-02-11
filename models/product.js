@@ -25,14 +25,14 @@ const productSchema = new mongoose.Schema({
         type : String,
         required : true
     },
-    description :{
+    dimension :{
         type : String,
         required : true
     },
     availability:{
         type: Boolean,
         required:true,
-        defult :true 
+        default :true 
     },
     image:{
         type : [String],

@@ -21,6 +21,7 @@ export function addProduct(req,res){
     const data = req.body;
 
     const newProduct = new Product(data);
+   
 
     newProduct.save().then(()=>{
         res.json({message : "Product add successfully"});
@@ -28,6 +29,7 @@ export function addProduct(req,res){
     }).catch((error)=>{
         
         res.status(500).json({message : "Product addition failed"})
+        
     });
 }
 
